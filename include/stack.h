@@ -9,13 +9,13 @@
 */
 
 // Estrutura para TAD Lista
-typedef struct list{ 
+typedef struct list_s{ 
     char* info;
-    struct list *prox;
+    struct list_s *prox;
 } list_t;
 
 //Estrutura para TAD Pilha
-typedef struct stack{
+typedef struct stack_s{
     list_t* top;
 }stack_t;
 

@@ -1,7 +1,7 @@
-#ifndef MAKE_IO_INCLUDED
-#define MAKE_IO_INCLUDED
+#ifndef IO_CLI_INCLUDED
+#define IO_CLI_INCLUDED
 /* 
-* @file: makeio.h
+* @file: iocli.h
 * @brief: Protótipos para funções de manipução de entrada/saída
 * @author: Rafael Eustáquio Pinto
 * @date: 06/09/2022 
@@ -13,6 +13,9 @@
 
 //Imprime um const char* em negrito
 void boldPrint(const char* str);
+
+//Otimiza um vetor de caracteres, realocando para o tamanho exato do vetor
+char* optimizeString(char* string);
 
 
 #endif

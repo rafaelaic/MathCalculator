@@ -14,7 +14,7 @@
 #include <string.h>
 
 #include "../include/stack.h"
-#include "../include/makeio.h"
+#include "../include/iocli.h"
 
 
 /* Defines */
@@ -24,11 +24,10 @@
 /* Functions */
 int main(int argc, char ** argv){
 
-    while (strcmp(expression, ""))
     char* expression = (char*) malloc(MAX_EXP_INPUT * sizeof(char));
     fgets(expression, MAX_EXP_INPUT, stdin);
+    expression = optimizeString(expression);
 
-    expression = (char*) realloc(expression, strlen(expression) * sizeof(char));
     printf("%lu\n", strlen(expression));
 
     boldPrint((const char*) expression);
