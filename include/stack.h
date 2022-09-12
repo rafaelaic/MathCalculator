@@ -8,12 +8,6 @@
 * @date: 06/09/2022 
 */
 
-// Estrutura para TAD Lista
-typedef struct list_s{ 
-    char* info;
-    struct list_s *prox;
-} list_t;
-
 //Estrutura para TAD Pilha
 typedef struct stack_s{
     list_t* top;

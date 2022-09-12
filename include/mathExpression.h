@@ -12,7 +12,7 @@
 typedef struct MathExpression_s{
     char * expression; //String contendo a expressão
     double value; //Double contendo o resultado da expressão
-}MathExpression_t;
+}MathExpression_t; //NAO SERA USADO
 
 
 

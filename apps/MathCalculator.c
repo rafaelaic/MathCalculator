@@ -13,8 +13,10 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "../include/list.h"
 #include "../include/stack.h"
 #include "../include/iocli.h"
+
 
 
 /* Defines */
@@ -24,13 +26,22 @@
 /* Functions */
 int main(int argc, char ** argv){
 
-    char* expression = (char*) malloc(MAX_EXP_INPUT * sizeof(char));
-    fgets(expression, MAX_EXP_INPUT, stdin);
-    expression = optimizeString(expression);
+    list_t* list = createList();
 
-    printf("%lu\n", strlen(expression));
+    list = appendList(list, "maria");
+    list = appendList(list, "jao");
+    list = appendList(list, "jose");
+    list = appendList(list, "arnaldo");
+    printList(list);
 
-    boldPrint((const char*) expression);
+    printf("\n\n");
+
+    list = removeList(list, "Joao");
+    list = removeList(list, "jose");
+
+    freeList(list);
+    
+    printList(list);
 
 
 

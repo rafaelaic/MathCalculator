@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "list.h"
 #include "stack.h"
 
 //Cria uma pilha vazia
@@ -26,7 +27,7 @@ void pushStack(stack_t* stack, char* info){
     list->info = info; //Salva a informação
 
     //Empilha
-    list->prox = stack->top;
+    list->next = stack->top;
     stack->top = list;
 }
 
@@ -44,7 +45,7 @@ char* popStack(stack_t* stack){
     info = list->info;
 
     //Pop
-    stack->top = list->prox;
+    stack->top = list->next;
     free(list);
 
     return info;
@@ -62,7 +63,7 @@ void freeStack(stack_t* stack){
 
     while(list != NULL)
     {
-        temp = list->prox;
+        temp = list->next;
         free(list);
         list=temp;
     }
@@ -74,7 +75,7 @@ void printStack(stack_t* stack){
     list_t* top;
     int i;
 
-    for(top = stack->top, i = 0; top != NULL; top = top->prox, i++)
+    for(top = stack->top, i = 0; top != NULL; top = top->next, i++)
         printf("[%d] %s\n", i, top->info);
 }
 

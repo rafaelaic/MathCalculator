@@ -1,6 +1,8 @@
 TARGET = ./bin/MathCalculator
 
 compile: ./apps/MathCalculator.c ./include/*.h ./obj/*.o
+	#Compile TAD list
+	gcc -c ./src/list.c -I ./include/ -o ./obj/list.o
 	#Compile TAD stack
 	gcc -c ./src/stack.c -I ./include/ -o ./obj/stack.o
 	#Compile IOCLI
