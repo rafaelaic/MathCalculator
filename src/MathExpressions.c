@@ -11,12 +11,11 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "StringList.h"
-#include "StringStack.h"
-#include "iocli.h"
-#include "MathExpressions.h"
+#include "../include/MathExpressions.h"
+#include "../include/StringList.h"
+#include "../include/StringStack.h"
+#include "../include/iocli.h"
 
-/* Defines */
 #define ESPACO 3
 #define DELIMITADOR 2
 #define OPERADOR 1

@@ -13,12 +13,10 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "MathExpressions.h"
-#include "StringList.h"
-#include "StringStack.h"
-#include "iocli.h"
-
-
+#include "../include/MathExpressions.h"
+#include "../include/StringList.h"
+#include "../include/StringStack.h"
+#include "../include/iocli.h"
 
 /* Defines */
 #define MAX_EXP_INPUT 100
@@ -26,10 +24,8 @@
 
 /* Functions */
 int main(int argc, char ** argv){
-    char * mathString = "5  + 12 - 123";
 
-    StringList_t* mathStrList = mathStrToMathStrList(mathString);
-    printStringList(mathStrList);
+    
 
 
     return EXIT_SUCCESS;

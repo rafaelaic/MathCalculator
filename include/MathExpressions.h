@@ -13,6 +13,8 @@
 //delimitador -> return 2
 //operador -> return 1
 //Operando -> return 0
+
+
 int checkCharCategory(char c);
 
 //Cria um string otimizada e copia o valor da bruta pela otimizada
@@ -20,7 +22,5 @@ char* createOptimizedString(char* heavyString);
 
 //Converte uma string em uma expressão matemática em formato de lista de strings
 StringList_t* mathStrToMathStrList(char* mathString);
-
-
 
 #endif
