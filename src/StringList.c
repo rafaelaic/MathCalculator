@@ -10,16 +10,16 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include "list.h"
+#include "StringList.h"
 
 //Create a empty list
-list_t* createList(){
+StringList_t* createStringList(){
     return NULL;
 }
 
 //Append a element in list
-list_t* appendList(list_t* list, char* info){
-    list_t* new = (list_t*)malloc(sizeof(list_t));
+StringList_t* appendStringList(StringList_t* list, char* info){
+    StringList_t* new = (StringList_t*)malloc(sizeof(StringList_t));
 
     new->info = info;
     new->next = list;
@@ -28,9 +28,9 @@ list_t* appendList(list_t* list, char* info){
 }
 
 //Remove um elemento da lista,se encontrado
-list_t* removeList(list_t* list, char* info){
-    list_t* tmp = list;
-    list_t* ant = NULL;
+StringList_t* removeStringList(StringList_t* list, char* info){
+    StringList_t* tmp = list;
+    StringList_t* ant = NULL;
 
 
     //Procura pelo elemento a ser removido
@@ -53,24 +53,24 @@ list_t* removeList(list_t* list, char* info){
 }
 
 //Verifica se a lista está vazia
-bool isEmptyList(list_t* list){
+bool isEmptyStringList(StringList_t* list){
     if(list == NULL) return true;
     else return false;
 }
 
 //Imprime a lista
-void printList(list_t* list){
+void printStringList(StringList_t* list){
     int i;
     for(i=0; list!=NULL; i++, list = list->next)
         printf("[%d] %s\n", i, list->info);
 }
 
 //Libera a lista
-void freeList(list_t* list){
+void freeStringList(StringList_t* list){
 
     while(list!=NULL)
     {
-        list_t* tmp = list->next;
+        StringList_t* tmp = list->next;
         free(list);
         list = tmp;
     }

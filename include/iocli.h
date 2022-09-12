@@ -10,6 +10,7 @@
 /* Defines */
 #define BOLD_EC "\033[1m"
 #define RESET_EC "\033[m"
+#define MAX_LEN_INPUT (100 + 1)
 
 //Imprime um const char* em negrito
 void boldPrint(const char* str);

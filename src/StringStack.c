@@ -1,5 +1,5 @@
 /* 
-* @file: stack.c
+* @file: StringStack.c
 * @brief: Implementação da TAD Pilha
 * @author: Rafael Eustáquio Pinto
 * @date: 06/09/2022 
@@ -9,12 +9,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "list.h"
-#include "stack.h"
+#include "StringList.h"
+#include "StringStack.h"
 
 //Cria uma pilha vazia
-stack_t* createStack(){
-    stack_t* stack = (stack_t*) malloc(sizeof(stack_t)); //Aloca a pilha
+StringStack_t* createStringStack(){
+    StringStack_t* stack = (StringStack_t*) malloc(sizeof(StringStack_t)); //Aloca a pilha
 
     stack->top = NULL; //Inicializa o topo da pilha com NULL
 
@@ -22,8 +22,8 @@ stack_t* createStack(){
 }
 
 //Empilha um elemento 
-void pushStack(stack_t* stack, char* info){
-    list_t* list = (list_t*) malloc(sizeof(list_t)); //Aloca um nó da lista
+void pushStringStack(StringStack_t* stack, char* info){
+    StringList_t* list = (StringList_t*) malloc(sizeof(StringList_t)); //Aloca um nó da lista
     list->info = info; //Salva a informação
 
     //Empilha
@@ -32,11 +32,11 @@ void pushStack(stack_t* stack, char* info){
 }
 
 //Remove um elemento
-char* popStack(stack_t* stack){
-    list_t* list;
+char* popStringStack(StringStack_t* stack){
+    StringList_t* list;
     char* info;
 
-    if(isEmptyStack(stack)){
+    if(isEmptyStringStack(stack)){
         return NULL;
     }
 
@@ -52,14 +52,14 @@ char* popStack(stack_t* stack){
 }
 
 //Verifica se a pilha está vazia
-bool isEmptyStack(stack_t* stack){
+bool isEmptyStringStack(StringStack_t* stack){
     return (stack->top==NULL);
 }
 
 //Libera a pilha
-void freeStack(stack_t* stack){
-    list_t* list = stack->top;
-    list_t* temp;
+void freeStringStack(StringStack_t* stack){
+    StringList_t* list = stack->top;
+    StringList_t* temp;
 
     while(list != NULL)
     {
@@ -71,8 +71,8 @@ void freeStack(stack_t* stack){
 }
 
 //Imprime a pilha
-void printStack(stack_t* stack){
-    list_t* top;
+void printStringStack(StringStack_t* stack){
+    StringList_t* top;
     int i;
 
     for(top = stack->top, i = 0; top != NULL; top = top->next, i++)
@@ -80,7 +80,7 @@ void printStack(stack_t* stack){
 }
 
 //Retorna o topo da pilha
-char* topStack(stack_t* stack){
+char* topStringStack(StringStack_t* stack){
     //if(isEmptyStack(stack)) return NULL;
     //else return stack->top->info;
 
