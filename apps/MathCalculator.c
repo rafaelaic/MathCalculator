@@ -50,19 +50,41 @@ int main(int argc, char ** argv){
     boldPrint("Lista de Variaveis\n");
     printMathVariableList(mathVarList);
 
-        
+     
     printf("\n\n--------------------------------------------------------\n\n");
     
-    
-    MathVariable_t* varzin = searchMathVariable(mathVarList, "bob");
+
+/* ---------------------------------------------------------------------------------- */
+    //Found a variable
+/*     MathVariable_t* varzin = searchMathVariable(mathVarList, "bob");
 
     if(varzin != MATH_VAR_NOT_FOUND)
         printf("%s -> %lf\n", varzin->name, varzin->value);
     else
-        printf("cleitin not found\n");
+        printf("cleitin not found\n"); */
+/* ---------------------------------------------------------------------------------- */
 
-    MathExpression_t* MathExpression = createMathExpression(); //Cria a MathExpression
-        
+    //Cria e converte a expressão matematica
+
+    boldPrint("Expressao Matematica\n");
+    char* mathString = "12.3";
+    MathExpression_t* MathExpression = stringToMathExpression(mathString);
+    printMathExpression(MathExpression);
+
+    printf("\n\n--------------------------------------------------------\n\n");
+
+    //Converte as variáveis
+    boldPrint("Expressao Matematica com variaveis convertidas\n");
+    bool status = convertMathExpressionVariables(MathExpression, mathVarList);
+    if(status) printf("[Sucesso ao converter]\n\n");
+    else printf("[Erro ao converter]\n\n");
+    printMathExpression(MathExpression);
+
+
+    
+
+    
+    
     
 
     return EXIT_SUCCESS; 

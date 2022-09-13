@@ -133,9 +133,9 @@ MathVariableList_t* invertMathVariableList(MathVariableList_t* list){
 // NUMBER 2
 // INVALID_VAR_CHARACTER 0
 int checkValidityCharacterVariable(char c){
-    if((c > 'A' && c < 'Z') || (c > 'a' && c < 'z') || (c == '_'))
+    if((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c == '_'))
         return LETTER_OR_UNDERLINE;
-    else if((c > '0' && c < '9'))
+    else if(c >= '0' && c <= '9')
         return NUMBER;
     else return INVALID_VAR_CHARACTER;
 }

@@ -195,6 +195,20 @@ MathExpression_t* stringToMathExpression(char* mathString){
     return MathExpression;
 }
 
+
+
+
+//Checa se uma string é numérica
+bool isNumericString(char* string){
+    int i;
+    for(i = 0; string[i] != '\0'; i++)
+    {
+        if(string[i]>= '0' && string[i]<='9') continue;
+        else return false;
+    }
+    return true;
+}
+
 //Converte as variáveis de uma expressão matemática para seu valor
 // True se conseguir converter todas as variáveis
 bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVariableList_t* var_list){
@@ -211,7 +225,7 @@ bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVaria
 
                 sprintf(math_expression->value, "%lf", var->value); //Imprime o valor da variável na string math_expression
             }
-            else return false;
+            else if(isNumericString(math_expression->value) == false) return false; //Se a expressao não for numérica retorna falso
         }
         math_expression = math_expression->next;
     }

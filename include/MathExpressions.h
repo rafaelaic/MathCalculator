@@ -59,6 +59,9 @@ char* createNewOptimizedString(char* heavyString);
 //Converte uma string em uma expressão matemática no formato MathExpression_t
 MathExpression_t* stringToMathExpression(char* mathString);
 
+//Checa se uma string é numérica
+bool isNumericString(char* string);
+
 //Converte as variáveis de uma expressão matemática para seu valor
 // True se conseguir converter todas as variáveis
 bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVariableList_t* var_list);
