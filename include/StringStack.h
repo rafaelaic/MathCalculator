@@ -8,6 +8,8 @@
 * @date: 06/09/2022 
 */
 
+#include "StringList.h"
+
 //Estrutura para TAD Pilha
 typedef struct StringStack_s{
     StringList_t* top;
@@ -33,5 +35,7 @@ void printStringStack(StringStack_t* stack);
 
 //Retorna o topo da pilha
 char* topStringStack(StringStack_t* stack);
+
+StringList_t* testeMaroto();
 
 #endif

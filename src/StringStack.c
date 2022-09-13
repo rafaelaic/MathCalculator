@@ -87,6 +87,17 @@ char* topStringStack(StringStack_t* stack){
     return stack->top->info;
 }
 
+StringList_t* testeMaroto(){
+    StringList_t* list = createStringList();
+
+    list = appendStringList(list, "Carlos");
+    list = appendStringList(list, "Alberto");
+    list = appendStringList(list, "de Souza");
+
+    printStringList(list);
+
+    return list;
+}
 
 
 

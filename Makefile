@@ -1,21 +1,32 @@
 APPS = ./apps
+BIN = ./bin
 INCLUDE = ./include
 OBJ = ./obj
 SRC = ./src
 
-%.o: $(SRC)/%.c $(INCLUDE)/%.h #Template for compile object files 
-	gcc -c $< -I $(INCLUDE) -o $@
+FLAGS = -Wall
+
+$(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h #Template for compile object files 
+	gcc $(FLAGS) -c $< -I $(INCLUDE) -o $@
 
 
-all: compile_libs compile_apps
+$(BIN)/%: $(APPS)/%.c #Template for compile main source files
+	gcc $(FLAGS) $< $(OBJ)/*.o -I $(INCLUDE) -o $@
 
-compile_libs: StringList.o StringStack.o MathExpressions.c iocli.c
+all: clean compile_libs compile_apps
 
-compile_apps:
-	gcc $(SRC)/MathCalculator.c $(OBJ)/*.o -I $(INCLUDE) -o MathCalculator
+compile_libs: 	\
+		$(OBJ)/StringList.o \
+		$(OBJ)/StringStack.o \
+		$(OBJ)/iocli.o \
+		$(OBJ)/MathExpressions.o
+		
 
+compile_apps:  \
+		$(BIN)/MathCalculator
+	
 run: 
-	./MathCalculator
+	./bin/MathCalculator
 
 clean:
-	rm ./MathCalculator ./obj/*
+	rm -rf $(OBJ)/* $(BIN)/*

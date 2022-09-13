@@ -8,13 +8,14 @@
 * @date: 12/09/2022 
 */
 
+#include "StringList.h"
+#include "StringStack.h"
+
 //Checa a categoria de um caracter
 //espaço -> return 3
 //delimitador -> return 2
 //operador -> return 1
 //Operando -> return 0
-
-
 int checkCharCategory(char c);
 
 //Cria um string otimizada e copia o valor da bruta pela otimizada

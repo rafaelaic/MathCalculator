@@ -11,10 +11,10 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "../include/MathExpressions.h"
-#include "../include/StringList.h"
-#include "../include/StringStack.h"
-#include "../include/iocli.h"
+#include "StringStack.h"
+#include "StringList.h"
+#include "MathExpressions.h"
+#include "iocli.h"
 
 #define ESPACO 3
 #define DELIMITADOR 2
