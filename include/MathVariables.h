@@ -8,6 +8,8 @@
 * @date: 13/09/2022 
 */
 
+#define MATH_VAR_NOT_FOUND NULL
+
 //Estrutura para armazenar uma variável, que contém um nome e um valor
 typedef struct MathVariable_s{
     char* name;
@@ -48,6 +50,14 @@ void freeMathVariableList(MathVariableList_t* list);
 //Inverte a lista
 MathVariableList_t* invertMathVariableList(MathVariableList_t* list);
 
+// Checa a validade de um caracter,
+// LETTER_OR_UNDERLINE 1
+// NUMBER 2
+// INVALID_VAR_CHARACTER 0
+int checkValidityCharacterVariable(char c);
 
+//Checa se o nome de uma variável é válido
+// True -> possui somente letras, numeros ou underlines, e o primeiro caractere é uma letra ou underline
+bool checkValidityVariableName(char* name);
 
 #endif

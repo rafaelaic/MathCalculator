@@ -14,8 +14,10 @@
 
 #include "StringStack.h"
 #include "StringList.h"
-#include "MathExpressions.h"
+#include "MathVariables.h"
 #include "iocli.h"
+
+#include "MathExpressions.h"
 
 #define ESPACO 3
 #define DELIMITADOR 2
@@ -193,4 +195,26 @@ MathExpression_t* stringToMathExpression(char* mathString){
     return MathExpression;
 }
 
+//Converte as variáveis de uma expressão matemática para seu valor
+// True se conseguir converter todas as variáveis
+bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVariableList_t* var_list){
 
+    while (math_expression != NULL)
+    {
+        if(math_expression->type == OPERANDO)
+        {
+            if(checkValidityVariableName(math_expression->value))
+            {
+                MathVariable_t* var = searchMathVariable(var_list, math_expression->value);
+
+                if(var == NULL) return false; //Se não encontrar retorna NULL
+
+                sprintf(math_expression->value, "%lf", var->value); //Imprime o valor da variável na string math_expression
+            }
+            else return false;
+        }
+        math_expression = math_expression->next;
+    }
+    
+    return true;
+}

@@ -13,11 +13,11 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "../include/MathVariables.h"
-#include "../include/MathExpressions.h"
-#include "../include/StringList.h"
-#include "../include/StringStack.h"
-#include "../include/iocli.h"
+#include "MathVariables.h"
+#include "MathExpressions.h"
+#include "StringList.h"
+#include "StringStack.h"
+#include "iocli.h"
 
 
 /* Defines */
@@ -26,34 +26,48 @@
 /* Functions */
 int main(int argc, char ** argv){
 
+    printf("\n\n--------------------------------------------------------\n\n");
 
-/*     MathVariableList_t* mathVarList = createMathVariableList();
-    for(int i = 0; i< 4; i++)
-    {
-        char* mathVar = (char*) malloc(MAX_LEN_INPUT * sizeof(char));
-        double value;
-        scanf("%s %lf", mathVar, &value);
-        mathVar = optimizeString(mathVar);
+    MathVariableList_t* mathVarList = createMathVariableList();
 
-        MathVariable_t* var = createMathVariable(mathVar, value);
-        mathVarList = appendMathVariableList(mathVarList, var);
 
-    }
-    printf("\n\n---------------------------\n\n");
-    MathVariable_t* varzin = searchMathVariable(mathVarList, "cleitin");
+    char* name1 = "xau" ;
+    double value1 = 23.1;
+    MathVariable_t* var1 = createMathVariable(name1, value1);
+    
+    char* name2 = "bob" ;
+    double value2 = 43434.12;
+    MathVariable_t* var2 = createMathVariable(name2, value2);
 
+    char* name3 = "jao" ;
+    double value3 = 54.12;
+    MathVariable_t* var3 = createMathVariable(name3, value3);
+
+    mathVarList = appendMathVariableList(mathVarList, var1);
+    mathVarList = appendMathVariableList(mathVarList, var2);
+    mathVarList = appendMathVariableList(mathVarList, var3);
+
+    boldPrint("Lista de Variaveis\n");
     printMathVariableList(mathVarList);
+
+        
+    printf("\n\n--------------------------------------------------------\n\n");
+    
+    
+    MathVariable_t* varzin = searchMathVariable(mathVarList, "bob");
 
     if(varzin != MATH_VAR_NOT_FOUND)
         printf("%s -> %lf\n", varzin->name, varzin->value);
     else
         printf("cleitin not found\n");
-        MathExpression_t* MathExpression = createMathExpression(); //Cria a MathExpression
+
+    MathExpression_t* MathExpression = createMathExpression(); //Cria a MathExpression
+        
     
 
-    return EXIT_SUCCESS; */
+    return EXIT_SUCCESS; 
 
-    char* string = (char*) malloc(sizeof(char) * 100);
+ /*    char* string = (char*) malloc(sizeof(char) * 100);
     while (true)
     {
         fgets(string, 100, stdin);
@@ -62,9 +76,9 @@ int main(int argc, char ** argv){
         printMathExpression(MathExpression);
         printf("\n\n---------------\n\n");
     }
-    
+   
 
-
+ */
 
 }
 

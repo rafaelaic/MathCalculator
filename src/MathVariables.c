@@ -19,7 +19,6 @@
 
 /* Defines */
 
-#define MATH_VAR_NOT_FOUND NULL
 #define INVALID_VAR_CHARACTER 0
 #define LETTER_OR_UNDERLINE 1
 #define NUMBER 2
@@ -130,9 +129,9 @@ MathVariableList_t* invertMathVariableList(MathVariableList_t* list){
 /* Análise de variáveis */
 
 // Checa a validade de um caracter,
-// Intervalos possíveis A-Z, a-z, _-> return 1
-// 0 - 9 -> return 2
-// INVALIDO -> 0
+// LETTER_OR_UNDERLINE 1
+// NUMBER 2
+// INVALID_VAR_CHARACTER 0
 int checkValidityCharacterVariable(char c){
     if((c > 'A' && c < 'Z') || (c > 'a' && c < 'z') || (c == '_'))
         return LETTER_OR_UNDERLINE;
@@ -143,11 +142,8 @@ int checkValidityCharacterVariable(char c){
 
 
 //Checa se o nome de uma variável é válido
-// INVALID_VAR_CHARACTER 0
-// LETTER_OR_UNDERLINE 1
-// NUMBER 2
+// True -> possui somente letras, numeros ou underlines, e o primeiro caractere é uma letra ou underline
 bool checkValidityVariableName(char* name){
-    char c = 0;
     int i;
 
     //Checa se o primeiro caracter é uma letra ou underline
@@ -162,4 +158,7 @@ bool checkValidityVariableName(char* name){
     //Nome válido retorna true
     return true;
 }
+
+
+
 

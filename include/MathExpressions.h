@@ -8,6 +8,8 @@
 * @date: 12/09/2022 
 */
 
+#include "MathVariables.h"
+
 // Estrutura para armazenar uma unidade das expressões matemáticas, 
 // a qual pode ser um operador, operando ou delimitador
 // operador -> type = 1
@@ -56,5 +58,9 @@ char* createNewOptimizedString(char* heavyString);
 
 //Converte uma string em uma expressão matemática no formato MathExpression_t
 MathExpression_t* stringToMathExpression(char* mathString);
+
+//Converte as variáveis de uma expressão matemática para seu valor
+// True se conseguir converter todas as variáveis
+bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVariableList_t* var_list);
 
 #endif
