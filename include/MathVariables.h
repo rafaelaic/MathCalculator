@@ -33,6 +33,9 @@ MathVariableList_t* appendMathVariableList(MathVariableList_t* list, MathVariabl
 //Remove um elemento da lista,se encontrado
 MathVariableList_t* removeMathVariableList(MathVariableList_t* list, MathVariable_t* var);
 
+//Procura uma variável na lista de variáveis e a retorna, se não encontrar retorna NULL
+MathVariable_t* searchMathVariable(MathVariableList_t* list, char* name);
+
 //Verifica se a lista está vazia
 bool isEmptyMathVariableList(MathVariableList_t* list);
 

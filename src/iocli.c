@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
 #include "iocli.h"
 
 //Imprime um const char* em negrito
@@ -17,8 +18,20 @@ void boldPrint(const char* str){
 }
 
 
-//Otimiza um vetor de caracteres, realocando para o tamanho exato do vetor
+//Otimiza um vetor de caracteres e remove o \n, realocando para o tamanho exato do vetor
 char* optimizeString(char* string){
-    string = (char*) realloc(string, strlen(string) * sizeof(char));
+    uint64_t len_string = strlen(string);
+    
+    //Remove o \n
+    if (string[len_string - 1] == '\n')
+    {
+        string[len_string - 1] = '\0'; 
+        len_string--;
+        //Otimiza a string
+        string = (char*) realloc(string, len_string * sizeof(char));
+    }
+        
+
+    
     return string;
 }

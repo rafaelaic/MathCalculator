@@ -25,9 +25,15 @@ compile_libs: 	\
 
 compile_apps:  \
 		$(BIN)/MathCalculator
-	
+
+depurate:
+	gcc -g $(FLAGS) $(APPS)/MathCalculator.c $(SRC)/*.c  -I $(INCLUDE) -o $(BIN)/Depurate_MathCalculator
+
+
 run: 
 	./bin/MathCalculator
 
 clean:
 	rm -rf $(OBJ)/* $(BIN)/*
+	clear
+

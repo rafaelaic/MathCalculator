@@ -15,7 +15,7 @@
 //Imprime um const char* em negrito
 void boldPrint(const char* str);
 
-//Otimiza um vetor de caracteres, realocando para o tamanho exato do vetor
+//Otimiza um vetor de caracteres e remove o \n, realocando para o tamanho exato do vetor
 char* optimizeString(char* string);
 
 

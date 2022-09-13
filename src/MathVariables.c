@@ -17,9 +17,18 @@
 #include "iocli.h"
 #include "MathVariables.h"
 
+/* Defines */
+
+#define MATH_VAR_NOT_FOUND NULL
+#define INVALID_VAR_CHARACTER 0
+#define LETTER_OR_UNDERLINE 1
+#define NUMBER 2
+
+
 //Create a math var
 MathVariable_t* createMathVariable(char* name, double value){
     MathVariable_t* var = (MathVariable_t*) malloc(sizeof(MathVariable_t));
+    
     var->name = name;
     var->value = value;
 
@@ -66,6 +75,19 @@ MathVariableList_t* removeMathVariableList(MathVariableList_t* list, MathVariabl
     return list;
 }
 
+//Procura uma variável na lista de variáveis e a retorna, se não encontrar retorna NULL
+MathVariable_t* searchMathVariable(MathVariableList_t* list, char* name){
+    while(list!=NULL)
+    {
+        if(strcmp(list->var->name, name)==0)
+        {
+            return list->var;
+        }
+        list = list->next;  
+    }
+    return MATH_VAR_NOT_FOUND;
+}
+
 //Verifica se a lista está vazia
 bool isEmptyMathVariableList(MathVariableList_t* list){
     if(list == NULL) return true;
@@ -102,4 +124,42 @@ MathVariableList_t* invertMathVariableList(MathVariableList_t* list){
     return inverted_list;
 }
 
+
+
+
+/* Análise de variáveis */
+
+// Checa a validade de um caracter,
+// Intervalos possíveis A-Z, a-z, _-> return 1
+// 0 - 9 -> return 2
+// INVALIDO -> 0
+int checkValidityCharacterVariable(char c){
+    if((c > 'A' && c < 'Z') || (c > 'a' && c < 'z') || (c == '_'))
+        return LETTER_OR_UNDERLINE;
+    else if((c > '0' && c < '9'))
+        return NUMBER;
+    else return INVALID_VAR_CHARACTER;
+}
+
+
+//Checa se o nome de uma variável é válido
+// INVALID_VAR_CHARACTER 0
+// LETTER_OR_UNDERLINE 1
+// NUMBER 2
+bool checkValidityVariableName(char* name){
+    char c = 0;
+    int i;
+
+    //Checa se o primeiro caracter é uma letra ou underline
+    if (checkValidityCharacterVariable(name[0]) != LETTER_OR_UNDERLINE) return false;
+
+    //Checa os outros caracteres
+    for(i = 1; name[i] != '\0'; i++)
+    {
+        if (checkValidityCharacterVariable(name[i]) == INVALID_VAR_CHARACTER) return false;
+    }
+
+    //Nome válido retorna true
+    return true;
+}
 

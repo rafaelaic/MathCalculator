@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "mathvariables.h": "c",
+        "stringlist.h": "c"
+    }
+}

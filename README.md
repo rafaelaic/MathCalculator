@@ -15,3 +15,8 @@ A math calculator made in C
 5º: Transforma em notação polonesa inversa, ainda em mathList_t
 6°: Calcula o resultado e retorna um mathResult_t
 
+a-z
+A-Z
+0-9
+_
+
