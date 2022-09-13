@@ -51,7 +51,7 @@ char* createOptimizedString(char* heavyString){
 StringList_t* mathStrToMathStrList(char* mathString){
 
     StringList_t* mathStrList = createStringList(); //Cria a lista de strings
-    int lenString = strlen(mathString); //Calcula o tamanho da string
+    
 
     char* tmpString = (char*) malloc(MAX_LEN_INPUT * sizeof(char)); //Cria uma string temporaria que será usada para construir as outras strings
 
@@ -60,8 +60,8 @@ StringList_t* mathStrToMathStrList(char* mathString){
 
     int i, j;
 
-    //Percorre todos os caracteres da string exceto o '\0'
-    for(i = 0, j = 0; i < lenString - 1; i++)
+    //Percorre todos os caracteres da string exceto o '\0' e o 'n'
+    for(i = 0, j = 0; mathString[i] != '\0' && mathString[i] != '\n'; i++)
     {
         c = mathString[i];
         int charCategory = checkCharCategory(c); //Checa a categoria do caractere
@@ -70,7 +70,7 @@ StringList_t* mathStrToMathStrList(char* mathString){
         {
             //Adiciona a expressão anterior na lista
             tmpString[j] = '\0';
-            mathStrList = appendStringList(mathStrList, createOptimizedString(tmpString));
+            if(strlen(tmpString) > 0) mathStrList = appendStringList(mathStrList, createOptimizedString(tmpString));
             
             //Adiciona o operador na lista, se diferente de espaço
             if(charCategory != ESPACO)
@@ -92,6 +92,11 @@ StringList_t* mathStrToMathStrList(char* mathString){
             j++;
         }
     }
+    //Adiciona a string restante na lista
+    if(strlen(tmpString) > 0) mathStrList = appendStringList(mathStrList, createOptimizedString(tmpString));
+
+    //Inverte a lista
+    mathStrList = invertStringList(mathStrList);
     free(tmpString);
     return mathStrList;
 }

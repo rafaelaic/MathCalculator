@@ -32,4 +32,7 @@ void printStringList(StringList_t* list);
 //Libera a lista
 void freeStringList(StringList_t* list);
 
+//Inverte a lista
+StringList_t* invertStringList(StringList_t* list);
+
 #endif

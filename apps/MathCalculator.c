@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include <string.h>
 
+#include "MathVariables.h"
 #include "MathExpressions.h"
 #include "StringList.h"
 #include "StringStack.h"
@@ -26,10 +27,22 @@
 /* Functions */
 int main(int argc, char ** argv){
 
-    StringList_t* teste = mathStrToMathStrList("12+5+8");
+/* 
+    MathVariableList_t* mathVarList = createMathVariableList();
+    for(int i = 0; i< 4; i++)
+    {
+        char* mathVar = (char*) malloc(MAX_LEN_INPUT * sizeof(char));
+        double value;
+        scanf("%s %lf", mathVar, &value);
 
-    printStringList(teste);
+        MathVariable_t* var = createMathVariable(mathVar, value);
+        mathVarList = appendMathVariableList(mathVarList, var);
 
+    }
+    printf("\n\n---------------------------\n\n");
+    printMathVariableList(mathVarList); */
+        
+    
 
     return EXIT_SUCCESS;
 }

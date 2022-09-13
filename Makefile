@@ -19,7 +19,8 @@ compile_libs: 	\
 		$(OBJ)/StringList.o \
 		$(OBJ)/StringStack.o \
 		$(OBJ)/iocli.o \
-		$(OBJ)/MathExpressions.o
+		$(OBJ)/MathExpressions.o \
+		$(OBJ)/MathVariables.o
 		
 
 compile_apps:  \

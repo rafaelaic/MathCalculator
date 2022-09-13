@@ -75,3 +75,16 @@ void freeStringList(StringList_t* list){
         list = tmp;
     }
 }
+
+//Inverte a lista
+StringList_t* invertStringList(StringList_t* list){
+
+    StringList_t* inverted_list = createStringList();
+    StringList_t* tmp = list;
+
+    do{
+        inverted_list = appendStringList(inverted_list, tmp->info);
+        tmp = tmp->next;
+    }while(tmp != NULL);
+    return inverted_list;
+}
