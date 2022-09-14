@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <string.h>
 #include <stdint.h>
+#include <math.h>
 
 #include "StringStack.h"
 #include "StringList.h"
@@ -200,13 +201,12 @@ MathExpression_t* stringToMathExpression(char* mathString){
 
 //Checa se uma string é numérica
 bool isNumericString(char* string){
-    int i;
-    for(i = 0; string[i] != '\0'; i++)
-    {
-        if(string[i]>= '0' && string[i]<='9') continue;
-        else return false;
-    }
-    return true;
+
+    char* endStr;
+    (void)strtod(string, &endStr);
+
+    if(endStr[0] == '\0') return true;
+    else return false;
 }
 
 //Converte as variáveis de uma expressão matemática para seu valor
@@ -231,4 +231,68 @@ bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVaria
     }
     
     return true;
+}
+
+
+//Calcula uma operação dada por um operador op, entre duas strings s1 e s2
+char* calcOperationBetwenTwoStrings(char* s1, char* s2, char* op)
+{
+    char* endStr;
+    double result;
+    char* string_result = (char*) malloc(MAX_LEN_INPUT * sizeof(char));
+    switch (op[0])
+    {
+    case '+':
+        result = strtod(s1, &endStr) + strtod(s2,&endStr);
+        break;
+    case '-':
+        result = strtod(s1, &endStr) - strtod(s2,&endStr);
+        break;
+    case '*':
+        result = strtod(s1, &endStr) * strtod(s2,&endStr);
+        break;
+    case '/':
+        result = strtod(s1, &endStr) / strtod(s2,&endStr);
+        break;
+    //case '^':
+        //result = pow(strtod(s1, &endStr), strtod(s2,&endStr));
+        //break;
+    default:
+        return NULL;
+        break;
+    }
+
+    sprintf(string_result, "%lf", result);
+    char* optimized_string = createNewOptimizedString(string_result);
+    free(string_result);
+    return optimized_string;
+}
+
+
+//Resolve uma expressão na notação polonesa inversa
+double resolvePostfixMathExpression(MathExpression_t* math_expression){
+
+    StringStack_t* stack = createStringStack();
+    char* op1, *op2;
+
+    char* tmp;
+    //Percorre a lista
+    while(math_expression != NULL)
+    {
+        //Adiciona o operando se pilha se for operando
+        if(math_expression->type == OPERANDO)
+            pushStringStack(stack, math_expression->value);
+        //Se for operador remove dois elementos da pilha, atua com o operador e empilha o resultado
+        else
+        {
+            op2 = popStringStack(stack);
+            op1 = popStringStack(stack);
+
+            pushStringStack(stack, calcOperationBetwenTwoStrings(op1, op2, math_expression->value));
+        }
+        
+        math_expression = math_expression->next;
+    }
+
+    return strtod(topStringStack(stack), &tmp);
 }

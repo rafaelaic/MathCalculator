@@ -9,6 +9,7 @@
 */
 
 #include "MathVariables.h"
+#include <math.h>
 
 // Estrutura para armazenar uma unidade das expressões matemáticas, 
 // a qual pode ser um operador, operando ou delimitador
@@ -62,8 +63,18 @@ MathExpression_t* stringToMathExpression(char* mathString);
 //Checa se uma string é numérica
 bool isNumericString(char* string);
 
+
 //Converte as variáveis de uma expressão matemática para seu valor
 // True se conseguir converter todas as variáveis
 bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVariableList_t* var_list);
+
+
+//Calcula uma operação dada por um operador op, entre duas strings s1 e s2
+char* calcOperationBetwenTwoStrings(char* s1, char* s2, char* op);
+
+//Resolve uma expressão na notação polonesa inversa
+double resolvePostfixMathExpression(MathExpression_t* math_expression);
+
+
 
 #endif

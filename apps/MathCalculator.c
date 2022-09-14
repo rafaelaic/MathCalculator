@@ -26,7 +26,8 @@
 /* Functions */
 int main(int argc, char ** argv){
 
-    printf("\n\n--------------------------------------------------------\n\n");
+
+/*     printf("\n\n--------------------------------------------------------\n\n");
 
     MathVariableList_t* mathVarList = createMathVariableList();
 
@@ -51,7 +52,7 @@ int main(int argc, char ** argv){
     printMathVariableList(mathVarList);
 
      
-    printf("\n\n--------------------------------------------------------\n\n");
+    printf("\n\n--------------------------------------------------------\n\n"); */
     
 
 /* ---------------------------------------------------------------------------------- */
@@ -65,15 +66,14 @@ int main(int argc, char ** argv){
 /* ---------------------------------------------------------------------------------- */
 
     //Cria e converte a expressão matematica
-
     boldPrint("Expressao Matematica\n");
-    char* mathString = "12.3";
+    char* mathString = " ";
     MathExpression_t* MathExpression = stringToMathExpression(mathString);
     printMathExpression(MathExpression);
 
     printf("\n\n--------------------------------------------------------\n\n");
 
-    //Converte as variáveis
+/*     //Converte as variáveis
     boldPrint("Expressao Matematica com variaveis convertidas\n");
     bool status = convertMathExpressionVariables(MathExpression, mathVarList);
     if(status) printf("[Sucesso ao converter]\n\n");
@@ -81,11 +81,16 @@ int main(int argc, char ** argv){
     printMathExpression(MathExpression);
 
 
-    
+    printf("\n\n--------------------------------------------------------\n\n"); */
+
+    double result = resolvePostfixMathExpression(MathExpression);
+
+    printf("Result -> %lf\n", result);
 
     
-    
-    
+
+
+
 
     return EXIT_SUCCESS; 
 
