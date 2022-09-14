@@ -4,7 +4,7 @@ INCLUDE = ./include
 OBJ = ./obj
 SRC = ./src
 
-FLAGS = -Wall
+FLAGS = -Wall -lm
 
 $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h #Template for compile object files 
 	gcc $(FLAGS) -c $< -I $(INCLUDE) -o $@

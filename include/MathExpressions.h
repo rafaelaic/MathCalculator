@@ -9,7 +9,6 @@
 */
 
 #include "MathVariables.h"
-#include <math.h>
 
 // Estrutura para armazenar uma unidade das expressões matemáticas, 
 // a qual pode ser um operador, operando ou delimitador

@@ -290,7 +290,7 @@ double resolvePostfixMathExpression(MathExpression_t* math_expression){
 
             pushStringStack(stack, calcOperationBetwenTwoStrings(op1, op2, math_expression->value));
         }
-        
+
         math_expression = math_expression->next;
     }
 
