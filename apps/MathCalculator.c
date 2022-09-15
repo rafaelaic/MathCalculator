@@ -20,14 +20,11 @@
 #include "iocli.h"
 
 
-/* Defines */
-#define MAX_EXP_INPUT 100
-
 /* Functions */
 int main(int argc, char ** argv){
 
 
-/*     printf("\n\n--------------------------------------------------------\n\n");
+    //printf("\n\n--------------------------------------------------------\n\n");
 
     MathVariableList_t* mathVarList = createMathVariableList();
 
@@ -48,11 +45,11 @@ int main(int argc, char ** argv){
     mathVarList = appendMathVariableList(mathVarList, var2);
     mathVarList = appendMathVariableList(mathVarList, var3);
 
-    boldPrint("Lista de Variaveis\n");
-    printMathVariableList(mathVarList);
+    //boldPrint("Lista de Variaveis\n");
+    //printMathVariableList(mathVarList);
 
      
-    printf("\n\n--------------------------------------------------------\n\n"); */
+    //printf("\n\n--------------------------------------------------------\n\n"); 
     
 
 /* ---------------------------------------------------------------------------------- */
@@ -65,34 +62,83 @@ int main(int argc, char ** argv){
         printf("cleitin not found\n"); */
 /* ---------------------------------------------------------------------------------- */
 
-    //Cria e converte a expressão matematica
-    boldPrint("Expressao Matematica\n");
-    char* mathString = " ";
+    //Var para expressão lida do stdin
+    char* input_expression = (char*) malloc(sizeof(char)*MAX_LEN_INPUT);
+
+
+
+    //Init message
+    boldPrint("\nMathCalculador RP - Alfa Version\n");
+
+    
+    while(true)
+    {
+        printf(">> ");
+        fgets(input_expression, MAX_LEN_INPUT, stdin);
+        input_expression = optimizeString(input_expression);
+
+        if(input_expression == NULL || strcmp("exit", input_expression) == 0)
+        {
+            boldPrint("\nThank you for test my calculator!\n");
+            return EXIT_SUCCESS;
+        }
+
+        double* result = calcStringMathExpression(input_expression, mathVarList);
+
+        if(result == INVALID_MATH_EXPRESSION) printf("Invalid Input\n");
+        else printf("%.2lf\n", *result);
+    }
+
+
+
+
+
+/* 
+    boldPrint("\nExpressao em String\n");
+    printf("\n>> %s", mathString);
+
+    printf("\n\n--------------------------------------------------------\n\n");
+
+
     MathExpression_t* MathExpression = stringToMathExpression(mathString);
     printMathExpression(MathExpression);
 
     printf("\n\n--------------------------------------------------------\n\n");
 
-/*     //Converte as variáveis
-    boldPrint("Expressao Matematica com variaveis convertidas\n");
+    // Converte as variáveis
+    //boldPrint("Expressao Matematica com variaveis convertidas\n");
     bool status = convertMathExpressionVariables(MathExpression, mathVarList);
-    if(status) printf("[Sucesso ao converter]\n\n");
-    else printf("[Erro ao converter]\n\n");
-    printMathExpression(MathExpression);
-
-
-    printf("\n\n--------------------------------------------------------\n\n"); */
-
-    double result = resolvePostfixMathExpression(MathExpression);
-
-    printf("Result -> %lf\n", result);
-
+    if(status) printf("\n[Sucesso ao converter]\n\n");
+    else 
+    {
+        printf("\n[Erro ao converter]\n\n");
+        return EXIT_FAILURE;
+    }
     
+    //printMathExpression(MathExpression);
+
+    printf("\n\n--------------------------------------------------------\n\n");
+
+    MathExpression_t* postfix_expression = convertInfixToPostFixMathExpression(MathExpression);
+
+    if(postfix_expression == INVALID_MATH_EXPRESSION)
+    {
+        printf("ERRO AO CONVERTER PARA POSTFIX\n\n");
+        return INVALID_MATH_EXPRESSION;
+    }
+
+    boldPrint("Expressao pos-fixada\n");
+    printMathExpression(postfix_expression);
+
+    printf("\n\n--------------------------------------------------------\n\n");
+
+    double* result = resolvePostfixMathExpression(postfix_expression);
+
+    if(result == INVALID_MATH_EXPRESSION) printf("Invalid Input\n");
+    else printf("Result -> %lf\n", *result);
 
 
-
-
-    return EXIT_SUCCESS; 
+    return EXIT_SUCCESS;  */
 
  /*    char* string = (char*) malloc(sizeof(char) * 100);
     while (true)

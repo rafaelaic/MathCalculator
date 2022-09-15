@@ -7,11 +7,11 @@ SRC = ./src
 FLAGS = -Wall -lm
 
 $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h #Template for compile object files 
-	gcc $(FLAGS) -c $< -I $(INCLUDE) -o $@
+	gcc -c $< -I $(INCLUDE) -o $@ $(FLAGS)
 
 
 $(BIN)/%: $(APPS)/%.c #Template for compile main source files
-	gcc $(FLAGS) $< $(OBJ)/*.o -I $(INCLUDE) -o $@
+	gcc $< $(OBJ)/*.o -I $(INCLUDE) -o $@ $(FLAGS)
 
 all: clean compile_libs compile_apps
 
@@ -27,7 +27,7 @@ compile_apps:  \
 		$(BIN)/MathCalculator
 
 depurate:
-	gcc -g $(FLAGS) $(APPS)/MathCalculator.c $(SRC)/*.c  -I $(INCLUDE) -o $(BIN)/Depurate_MathCalculator
+	gcc -g $(APPS)/MathCalculator.c $(SRC)/*.c  -I $(INCLUDE) -o $(BIN)/Depurate_MathCalculator $(FLAGS)
 
 
 run: 

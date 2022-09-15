@@ -10,6 +10,9 @@
 
 #include "MathVariables.h"
 
+
+#define INVALID_MATH_EXPRESSION NULL
+
 // Estrutura para armazenar uma unidade das expressões matemáticas, 
 // a qual pode ser um operador, operando ou delimitador
 // operador -> type = 1
@@ -56,12 +59,14 @@ int checkCharCategory(char c);
 //Cria um string otimizada e copia o valor da bruta pela otimizada
 char* createNewOptimizedString(char* heavyString);
 
+//Analisa operadores adjacentes com '-'
+MathExpression_t* analyseAdjacentOperators(MathExpression_t* old_expression);
+
 //Converte uma string em uma expressão matemática no formato MathExpression_t
 MathExpression_t* stringToMathExpression(char* mathString);
 
 //Checa se uma string é numérica
 bool isNumericString(char* string);
-
 
 //Converte as variáveis de uma expressão matemática para seu valor
 // True se conseguir converter todas as variáveis
@@ -71,9 +76,19 @@ bool convertMathExpressionVariables(MathExpression_t* math_expression, MathVaria
 //Calcula uma operação dada por um operador op, entre duas strings s1 e s2
 char* calcOperationBetwenTwoStrings(char* s1, char* s2, char* op);
 
+//Calcula a prioridade entre dois operadores op_exp e op_stack
+//Retorna true se a prioridade de op_exp for maior que a prioridade de op_stack
+bool calcPriorityBetweenTwoOperators(char* op_exp, char* op_stack);
+
+
+//Convert Infix to postfix MathExpression
+MathExpression_t* convertInfixToPostFixMathExpression(MathExpression_t* infix_expression);
+
+
 //Resolve uma expressão na notação polonesa inversa
-double resolvePostfixMathExpression(MathExpression_t* math_expression);
+// Se o retorno for NULL a expressão é inválida
+double* resolvePostfixMathExpression(MathExpression_t* math_expression);
 
-
+double* calcStringMathExpression(char* str_expression, MathVariableList_t* var_list);
 
 #endif

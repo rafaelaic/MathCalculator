@@ -20,6 +20,7 @@ void boldPrint(const char* str){
 
 //Otimiza um vetor de caracteres e remove o \n, realocando para o tamanho exato do vetor
 char* optimizeString(char* string){
+    if(string[0] == '\n') return NULL;
     uint64_t len_string = strlen(string);
     
     //Remove o \n
