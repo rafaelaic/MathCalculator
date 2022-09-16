@@ -1,10 +1,9 @@
 # MathCalculator
-A math calculator made in C
+<p>A math calculator made in C<p>
 
 ## How it Works
-
-In **Alfa Version** you can calculate simple math expressions.
-The operators supported are: 
+<p>In **Alfa Version** you can calculate simple math expressions.<p>
+<p>The operators supported are:<p>
  ** + - * / ^ **
 
 Only parentheses are supported.
