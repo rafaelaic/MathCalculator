@@ -11,7 +11,7 @@
 
 <p>Only parentheses <strong>( )</strong> are supported.</p>
 
-<p> The only variable supported in this version is <code><strong>pi</strong> = 3.141592</code></p>
+<p> The only variable registered in this version is <code><strong>pi</strong> = 3.141592</code></p>
 
 ## Examples
 
@@ -23,5 +23,9 @@
 <code>>> pi * 3</code>
 <br>
 <code>9.42</code>
+
+## How to install
+<p>Just clone this repository and run:</p>
+<code>make && make run</code>
 
 
