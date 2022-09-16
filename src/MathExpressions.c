@@ -90,7 +90,7 @@ void freeMathExpression(MathExpression_t* list){
 
     while(list!=NULL)
     {
-        MathExpression_t* tmp = list->next;
+        MathExpression_t*  tmp = list->next;
         free(list);
         list = tmp;
     }

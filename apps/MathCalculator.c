@@ -37,7 +37,7 @@ int main(int argc, char ** argv){
 
 
     //Var para expressão lida do stdin
-    char* input_expression = (char*) malloc(sizeof(char)*MAX_LEN_INPUT);
+    char* input_expression = (char*) malloc(sizeof(char)* MAX_LEN_INPUT);
     char* input_optmized_expression;
 
 
