@@ -18,18 +18,16 @@
     <li>
         <h3>Math Expression Calculate</h3>
         <p>Calculate math expressions like <code>(124 / 4) * $pi</code></p>
-        <strong><p>The result is saved in $s special var</p></srtong>
+        <strong><p>The result is saved in $s special var</p></strong>
     </li>
 </ul>
 
 
 ### Supported operators
 <p>The operators supported are:</p>
- <code><strong>+ - * / ^</strong></code>
+ <strong><code>+ - * / ^</code></strong>
 
 <p>Only parentheses <strong>( )</strong> are supported.</p>
-
-<p> The only variable registered in this version is <code><strong>pi</strong> = 3.141592</code></p>
 
 ## Examples
 
