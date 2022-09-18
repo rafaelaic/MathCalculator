@@ -8,15 +8,15 @@
 
 <ul>
     <li>
-        <strong><h3>Command Mode</h3></strong>
+        <h3>Command Mode</h3>
         <p>Execute commands like listvar, listcommands, clear, and more.</p>
     </li>
     <li>
-        <strong><h3>Variable Declaration Mode</h3></strong>
+        <h3>Variable Declaration Mode</h3>
         <p>Declare variables with expressions like <code>var_name=math expression</code></p>
     </li>
     <li>
-        <strong><h3>Math Expression Calculate</h3></strong>
+        <h3>Math Expression Calculate</h3>
         <p>Calculate math expressions like <code>(124 / 4) * $pi</code></p>
         <strong><p>The result is saved in $s special var</p></srtong>
     </li>
