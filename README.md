@@ -30,28 +30,29 @@
 <p>Only parentheses <strong>( )</strong> are supported.</p>
 
 ## Examples
-
-<code>>> (23 - 67)*(343)</code>
-<br>
-<code>-15092.00</code>
-<br>
-
-<code>>> pi * 3</code>
-<br>
-<code>9.42</code>
-<br>
-<code>>> love=100</code>
-<br>
-<code>>> listvar</code>
-<br>
 <pre><code>
+>> (23 - 67)*(343)
+-15092.00
+>> pi * 3
+9.42
+>> love=100
+>> listvar
 -------------------------------
 |        Variables List       |
 -------------------------------
 love -> 100.00
 $s -> 9.42
 $pi -> 3.14
+>> listcommands
+-------------------------------
+|        Commands List        |
+-------------------------------
+listcommands -> List the registered commands
+listvar -> List the registered variables
+clear -> Clear the CLI
+exit -> Exit the program
 </code></pre>
+
 
 ## How to install
 <p>Just clone this repository and run:</p>

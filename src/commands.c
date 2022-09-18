@@ -23,6 +23,7 @@ void listCommands(){
     printf(""\
     "listcommands -> List the registered commands\n"\
     "listvar -> List the registered variables\n"\
+    "clear -> Clear the CLI\n"\
     "exit -> Exit the program\n");
     printf("\n");
 }
