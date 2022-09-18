@@ -35,22 +35,23 @@
 <br>
 <code>-15092.00</code>
 <br>
+
 <code>>> pi * 3</code>
 <br>
 <code>9.42</code>
 <br>
-<code>love=100</code>
+<code>>> love=100</code>
 <br>
 <code>>> listvar</code>
 <br>
-<code>
+<pre><code>
 -------------------------------
 |        Variables List       |
 -------------------------------
 love -> 100.00
 $s -> 9.42
 $pi -> 3.14
-</code>
+</code></pre>
 
 ## How to install
 <p>Just clone this repository and run:</p>
