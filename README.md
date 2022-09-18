@@ -23,7 +23,7 @@
 </ul>
 
 
-### Supported operators
+## Supported operators
 <p>The operators supported are:</p>
  <strong><code>+ - * / ^</code></strong>
 
