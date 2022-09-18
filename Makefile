@@ -20,7 +20,10 @@ compile_libs: 	\
 		$(OBJ)/StringStack.o \
 		$(OBJ)/iocli.o \
 		$(OBJ)/MathExpressions.o \
-		$(OBJ)/MathVariables.o
+		$(OBJ)/MathVariables.o \
+		$(OBJ)/commands.o
+		
+
 		
 
 compile_apps:  \

@@ -9,6 +9,7 @@
 */
 
 #define MATH_VAR_NOT_FOUND NULL
+#define INVALID_VAR_DECLARATION NULL
 
 //Estrutura para armazenar uma variável, que contém um nome e um valor
 typedef struct MathVariable_s{
@@ -60,4 +61,11 @@ int checkValidityCharacterVariable(char c);
 // True -> possui somente letras, numeros ou underlines, e o primeiro caractere é uma letra ou underline
 bool checkValidityVariableName(char* name);
 
+//Insere uma variável na lista se ela não existir
+//Se existir edita seu valor
+MathVariableList_t* writeMathVariable(MathVariableList_t* varList, MathVariable_t* var);
+
+/* Declaração de variáveis */
+
+MathVariableList_t* declareMathVariable(char* str_expression, MathVariableList_t* var_list);
 #endif

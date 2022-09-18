@@ -18,33 +18,31 @@
 #include "StringList.h"
 #include "StringStack.h"
 #include "iocli.h"
+#include "commands.h"
 
+
+MathVariableList_t* initializeVarList(){
+    MathVariableList_t* varList = createMathVariableList();
+
+    MathVariable_t* var= createMathVariable("$pi", 3.14159265359);
+    varList = appendMathVariableList(varList, var);
+    return varList;
+}
 
 /* Functions */
 int main(int argc, char ** argv){
 
+    MathVariableList_t* varList = initializeVarList(); //Inicializa a lista de variáveis
+    MathVariable_t* previous_result = createMathVariable("$s", 0);
+    varList = appendMathVariableList(varList, previous_result);
 
-    //printf("\n\n--------------------------------------------------------\n\n");
-
-    MathVariableList_t* mathVarList = createMathVariableList();
-
-
-    char* name1 = "pi" ;
-    double value1 = 3.141592;
-    MathVariable_t* var1 = createMathVariable(name1, value1);
-
-    mathVarList = appendMathVariableList(mathVarList, var1);
-
-
-    //Var para expressão lida do stdin
+    //Aloca string para entrada
     char* input_expression = (char*) malloc(sizeof(char)* MAX_LEN_INPUT);
     char* input_optmized_expression;
-
 
     //Init message
     boldPrint("\nMathCalculador RP - Alfa Version\n");
 
-    
     while(true)
     {
         printf(">> ");
@@ -53,16 +51,28 @@ int main(int argc, char ** argv){
 
         if(input_optmized_expression == NULL) continue;
 
-        if(strcmp("exit", input_optmized_expression) == 0)
-        {
-            boldPrint("\nThank you for test my calculator!\n");
-            return EXIT_SUCCESS;
+        //Tenta executar comando
+        bool status = execCommand(input_optmized_expression, varList);
+        if(status == true) continue;
+
+        //Tenta declarar variável
+        MathVariableList_t* declare_var_status = NULL;
+        declare_var_status = declareMathVariable(createNewOptimizedString(input_optmized_expression), varList);
+        if(declare_var_status != NULL)
+        { 
+            varList = declare_var_status;
+            continue;
         }
 
-        double* result = calcStringMathExpression(input_optmized_expression, mathVarList);
+        double* result = calcStringMathExpression(input_optmized_expression, varList);
 
         if(result == INVALID_MATH_EXPRESSION) printf("Invalid Input\n");
-        else printf("%.2lf\n", *result);
+        else 
+        {
+            printf("%.2lf\n", *result);
+            previous_result->value = *result;
+        }
+        
         free(result);
     }
 

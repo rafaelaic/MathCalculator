@@ -13,7 +13,6 @@
 
 #include "StringStack.h"
 #include "MathExpressions.h"
-#include "MathExpressions.h"
 #include "iocli.h"
 #include "MathVariables.h"
 
@@ -22,7 +21,7 @@
 #define INVALID_VAR_CHARACTER 0
 #define LETTER_OR_UNDERLINE 1
 #define NUMBER 2
-
+#define SPECIAL_VAR 3
 
 //Create a math var
 MathVariable_t* createMathVariable(char* name, double value){
@@ -137,6 +136,8 @@ int checkValidityCharacterVariable(char c){
         return LETTER_OR_UNDERLINE;
     else if(c >= '0' && c <= '9')
         return NUMBER;
+    else if(c == '$')
+        return SPECIAL_VAR;
     else return INVALID_VAR_CHARACTER;
 }
 
@@ -147,7 +148,7 @@ bool checkValidityVariableName(char* name){
     int i;
 
     //Checa se o primeiro caracter é uma letra ou underline
-    if (checkValidityCharacterVariable(name[0]) != LETTER_OR_UNDERLINE) return false;
+    if (checkValidityCharacterVariable(name[0]) != LETTER_OR_UNDERLINE && checkValidityCharacterVariable(name[0]) != SPECIAL_VAR) return false;
 
     //Checa os outros caracteres
     for(i = 1; name[i] != '\0'; i++)
@@ -160,5 +161,55 @@ bool checkValidityVariableName(char* name){
 }
 
 
+/* Manipulação de variáveis */
+
+//Insere uma variável na lista se ela não existir
+//Se existir edita seu valor
+MathVariableList_t* writeMathVariable(MathVariableList_t* varList, MathVariable_t* var){
+    MathVariable_t* wantedVar = searchMathVariable(varList, var->name);
+
+    if(wantedVar != NULL) 
+    {
+        wantedVar->value = var->value;
+    }   
+    else
+    {
+        varList = appendMathVariableList(varList, var);
+    }
+    return varList;
+}
 
 
+/* Declaração de variáveis */
+MathVariableList_t* declareMathVariable(char* str_expression, MathVariableList_t* var_list){
+
+    int i, j = 0;
+    for(i = 0; str_expression[i] != '\0'; i++)
+    {
+        if(str_expression[i] == '=') j++;
+    }
+
+    if(j != 1) return INVALID_VAR_DECLARATION; //Verifica a quantidade de iguais na expressão
+
+    char* var_name, *math_expression;
+    var_name = math_expression = NULL;
+
+    //Separa a string no '='
+    var_name = strtok(str_expression, "=");
+    math_expression = strtok(NULL, "=");
+
+    if(var_name == NULL || math_expression == NULL) return INVALID_VAR_DECLARATION;
+
+    //Verifica nome da variavel
+    if(checkValidityVariableName(var_name) == false) return INVALID_VAR_DECLARATION;
+
+    //Calcula a expressão
+    double* result = calcStringMathExpression(math_expression, var_list);
+    if(result == NULL) return INVALID_VAR_DECLARATION;
+
+    //Salva a variável
+    MathVariable_t* var = createMathVariable(var_name, *result);
+    var_list = writeMathVariable(var_list, var);
+
+    return var_list;
+}
