@@ -1,5 +1,3 @@
-mkdir obj bin #Create bin directories
-
 APPS = ./apps
 BIN = ./bin
 INCLUDE = ./include
@@ -15,7 +13,7 @@ $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h #Template for compile object files
 $(BIN)/%: $(APPS)/%.c #Template for compile main source files
 	gcc $< $(OBJ)/*.o -I $(INCLUDE) -o $@ $(FLAGS)
 
-all: clean compile_libs compile_apps
+all: clean create_bin_directories compile_libs compile_apps
 
 compile_libs: 	\
 		$(OBJ)/StringList.o \
@@ -26,7 +24,8 @@ compile_libs: 	\
 		$(OBJ)/commands.o
 		
 
-		
+create_bin_directories:
+	mkdir obj bin
 
 compile_apps:  \
 		$(BIN)/MathCalculator
