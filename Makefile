@@ -25,7 +25,7 @@ compile_libs: 	\
 		
 
 create_bin_directories:
-	mkdir obj bin
+	mkdir $(OBJ) $(BIN)
 
 compile_apps:  \
 		$(BIN)/MathCalculator
@@ -39,5 +39,6 @@ run:
 
 clean:
 	rm -rf $(OBJ)/* $(BIN)/*
+	rm -r $(OBJ) $(BIN)
 	clear
 
