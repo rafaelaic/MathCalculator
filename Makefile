@@ -1,3 +1,5 @@
+mkdir obj bin #Create bin directories
+
 APPS = ./apps
 BIN = ./bin
 INCLUDE = ./include
