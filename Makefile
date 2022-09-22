@@ -13,7 +13,7 @@ $(OBJ)/%.o: $(SRC)/%.c $(INCLUDE)/%.h #Template for compile object files
 $(BIN)/%: $(APPS)/%.c #Template for compile main source files
 	gcc $< $(OBJ)/*.o -I $(INCLUDE) -o $@ $(FLAGS)
 
-all: clean create_bin_directories compile_libs compile_apps
+all: clean compile_libs compile_apps
 
 compile_libs: 	\
 		$(OBJ)/StringList.o \
@@ -22,10 +22,6 @@ compile_libs: 	\
 		$(OBJ)/MathExpressions.o \
 		$(OBJ)/MathVariables.o \
 		$(OBJ)/commands.o
-		
-
-create_bin_directories:
-	mkdir $(OBJ) $(BIN)
 
 compile_apps:  \
 		$(BIN)/MathCalculator
@@ -39,6 +35,5 @@ run:
 
 clean:
 	rm -rf $(OBJ)/* $(BIN)/*
-	rm -r $(OBJ) $(BIN)
 	clear
 
