@@ -27,9 +27,6 @@ char* optimizeString(char* string){
     if (string[len_string - 1] == '\n')
     {
         string[len_string - 1] = '\0'; 
-        len_string--;
-        //Otimiza a string
-        string = (char*) realloc(string, len_string * sizeof(char));
     }
         
 
