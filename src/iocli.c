@@ -14,7 +14,11 @@
 
 //Imprime um const char* em negrito
 void boldPrint(const char* str){
+#ifdef _WIN32
+    printf("%s", str);
+#else
     printf("%s%s%s", BOLD_EC, str, RESET_EC);
+#endif
 }
 
 
