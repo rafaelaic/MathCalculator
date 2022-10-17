@@ -15,6 +15,12 @@
 #include "MathVariables.h"
 #include "iocli.h"
 
+/* macro definition for console clearing */
+#ifdef _WIN32
+    #define CLEAR_SCREEN system("cls")
+#else
+    #define CLEAR_SCREEN puts("\x1b[H\x1b[2J")
+#endif
 
 void listCommands(){
     printf("\n-------------------------------\n");
@@ -62,7 +68,7 @@ else if(strcmp(command, "listvar") == 0)
 }
 else if(strcmp(command, "clear") == 0)
 {
-    system("clear");
+    CLEAR_SCREEN;
 }
 else return false;
 return true;
