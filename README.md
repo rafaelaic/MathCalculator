@@ -56,6 +56,12 @@ exit -> Exit the program
 
 ## How to install
 <p>Just clone this repository and run:</p>
-<code>make && make run</code>
+<code>./bin/MathCalculator #for linux os</code>
+<p>or .\bin\MathCalculator_win32.exe for Windows</p>
+<strong>If you want compiler your entire build run: <strong>
+<code>$ make && make run</code>
+<p>or</p>
+<code>gcc ./apps/MathCalculator ./src/* -I ./include -o ./bin/YourMathCalculatorBuild</code>
+
 
 
