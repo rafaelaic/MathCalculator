@@ -100,6 +100,7 @@ void freeMathExpression(MathExpression_t* list){
 MathExpression_t* invertMathExpression(MathExpression_t* list){
 
     if(list == NULL) return NULL;
+    if(list->next == NULL) return list;
 
     MathExpression_t* inverted_list = createMathExpression();
     MathExpression_t* tmp = list;
@@ -141,10 +142,10 @@ char* createNewOptimizedString(char* heavyString){
 //Analisa operadores adjacentes com '-'
 MathExpression_t* analyseAdjacentOperators(MathExpression_t* old_expression)
 {
-    MathExpression_t* new_expression;
+    MathExpression_t* new_expression = createMathExpression();
     while(old_expression != NULL)
     {
-        if(old_expression->type == OPERADOR && old_expression->next->value[0] == '-' && old_expression->next->next->type == OPERANDO)
+        if(((old_expression->next != NULL) && (old_expression->next->next != NULL)) && old_expression->type == OPERADOR && old_expression->next->value[0] == '-' && old_expression->next->next->type == OPERANDO) 
         {
             new_expression = appendMathExpression(new_expression, old_expression->value, old_expression->type); //ADD OPERADOR
             new_expression = appendMathExpression(new_expression, "(", DELIMITADOR); //ADD PARENTESES
