@@ -59,7 +59,7 @@ exit -> Exit the program
 <p><strong>If you want compile your own build run: </strong></p>
 <code>$ make && make run</code>
 <p>or</p>
-<code>gcc ./apps/MathCalculator ./src/* -I ./include -o ./bin/YourMathCalculatorBuild</code>
+<code>$ gcc ./apps/MathCalculator ./src/* -I ./include -o ./bin/YourMathCalculatorBuild</code>
 
 
 
