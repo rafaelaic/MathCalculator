@@ -58,8 +58,7 @@ exit -> Exit the program
 <p>Just clone this repository and run the build on ./bin/ according your OS.</p>
 <p><strong>If you want compile your own build run: </strong></p>
 <code>$ make && make run</code>
-<p>or</p>
-<code>$ gcc ./apps/MathCalculator ./src/* -I ./include -o ./bin/YourMathCalculatorBuild</code>
+<p>or <code>$ gcc ./apps/MathCalculator ./src/* -I ./include -o ./bin/YourMathCalculatorBuild</code></p>
 
 
 
