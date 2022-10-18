@@ -4,7 +4,7 @@
 ## How it Works
 <p>In <strong>1.1 version</strong> you can calculate math expressions, declare variables and use commands.</p>
 
-<p>The calculator has 3 command modes, starting from an input expression.</p>
+<p>The calculator has 3 command modes, starting with an input expression.</p>
 
 <ul>
     <li>
