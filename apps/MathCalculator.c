@@ -45,7 +45,7 @@ int main(int argc, char ** argv){
 
     while(true)
     {
-        printf(">> ");
+        boldPrint(">> ");
         fgets(input_expression, MAX_LEN_INPUT, stdin);
         input_optmized_expression = optimizeString(input_expression);
 
