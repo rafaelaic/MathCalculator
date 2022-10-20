@@ -41,7 +41,7 @@ int main(int argc, char ** argv){
     char* input_optmized_expression;
 
     //Init message
-    boldPrint("\nMathCalculador RP - Alfa Version\n");
+    boldPrint("\nMathCalculador RP - 1.1 Version\n");
 
     while(true)
     {
