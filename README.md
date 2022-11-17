@@ -1,5 +1,5 @@
-# MathCalculator
-<p>A math calculator made in C</p>
+# MathExpression Solver
+<p>A math expression calculator made in C</p>
 
 ## How it Works
 <p>In <strong>1.1 version</strong> you can calculate math expressions, declare variables and use commands.</p>
