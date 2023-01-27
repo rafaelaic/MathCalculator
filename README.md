@@ -1,5 +1,5 @@
 # MathExpression Calculator
-<p>A math expression calculator written in C</p>
+<p>A CLI math expression calculator written in C</p>
 
 ## How it Works
 <p>In <strong>1.1 version</strong> you can calculate math expressions, declare variables and use commands.</p>
